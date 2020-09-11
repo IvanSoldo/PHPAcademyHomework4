@@ -394,7 +394,7 @@ values ('rgoodrum0@imageshack.us','Roodie', 'Roddie', 'Goodrum', 'U4oPFypTlPl', 
        ('cjobe2@desdev.cn', 'Celine','Jobe', 'Jobe', 'Female', 8, 2, 777777),
        ('kmccusaig3@simplemachines.org','Kristian', 'Kristan', 'McCuaig', 'Female', 9, 2, 888888),
        ('dedelmann4@tiny.cc', 'Derward','Edelmann', 'Edelmann', 'Male', 10, 2, 999999),
-       ('ivandragosoldo@gmail.com','Ivan', 'Ivan', 'Soldo', 'Smvhasvbn', 10, 1, 123456);
+       ('ivandragosoldo@gmail.com','Ivan', 'Ivan', 'Soldo', 'Smvhasvbn', 7, 1, 123456);
 
 insert into product_type (product_type_description)
 values ('book'),
@@ -472,22 +472,26 @@ select *
 from inventory
 where product_available = 1;
 
+#List users and their adress from Vinkovci
 select u.last_name, c.name as country, a.city_name, a.postal_code, a.address
 from user u
          inner join address a on u.address_id = a.id
          inner join country c on a.country_code = c.code
 where a.postal_code = 32100 && a.country_code = '191';
 
+#List products with price 10 or more
 select p.product_name, pt.product_type_description, p.product_price
 from product p
          inner join product_type pt on p.product_type_id = pt.id
 where p.product_price > 9;
 
-select p.product_name as products_avaliable
+#List available products
+select p.product_name as products_available
 from product p
          inner join inventory i on p.id = i.product_id
 where i.product_available = 1;
 
+#List all ordered items for specific user
 select concat(u.last_name, ' ', u.first_name) as full_name,
        p.product_name,
        op.quantity,
@@ -498,12 +502,15 @@ from user u
          inner join product p on op.product_id = p.id
 where u.id = 2;
 
-select o.order_date, p.product_name, op.quantity
+#List specific order
+select o.id, o.order_date, p.product_name, op.quantity
 from `order` o
          inner join order_product op on o.id = op.order_id
          inner join product p on op.product_id = p.id
-where op.quantity > 1;
+where op.order_id = 1;
 
+select * from product
+where product_price > (select AVG(product_price) from product);
 
 delete
 from shop
