@@ -42,8 +42,8 @@ CREATE TABLE IF NOT EXISTS user
     password   varchar(255)        not null,
     address_id int                 not null,
     role_id    int                 not null,
-    otp_password char(6) not null,
-    otp_timestamp datetime not null default CURRENT_TIMESTAMP,
+    otp char(6) not null,
+    otp_created_at datetime not null default now(),
     foreign key (address_id) references address (id),
     foreign key (role_id) references role (id)
 );
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `order`
 (
     id         int not null primary key auto_increment,
     user_id    int not null,
-    order_date datetime not null default CURRENT_TIMESTAMP,
+    order_date datetime not null default now(),
     foreign key (user_id) references user (id)
         on delete cascade
 );
@@ -107,6 +107,7 @@ create trigger tr_update_country
     on country
     for each row
     set new.name = UPPER(new.name);
+
 
 insert into role (name)
 values ('admin'),
@@ -383,7 +384,7 @@ values (11),
        (12),
        (13);
 
-insert into user (email,username, first_name, last_name, password, address_id, role_id, otp_password)
+insert into user (email,username, first_name, last_name, password, address_id, role_id, otp)
 values ('rgoodrum0@imageshack.us','Roodie', 'Roddie', 'Goodrum', 'U4oPFypTlPl', 1, 2, 000000),
        ('kwyllt1@nbcnews.com','Kale', 'Kale', 'Wyllt', '2F3uyA', 2, 2, 111111),
        ('mlinggood2@nih.gov','Linggood','Kale', 'Linggood', 'McW7Fi1Z5S', 3, 2, 222222),
@@ -472,7 +473,7 @@ select *
 from inventory
 where product_available = 1;
 
-#List users and their adress from Vinkovci
+#List users and their address from Vinkovci
 select u.last_name, c.name as country, a.city_name, a.postal_code, a.address
 from user u
          inner join address a on u.address_id = a.id

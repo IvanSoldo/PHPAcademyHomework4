@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 11, 2020 at 12:21 PM
+-- Generation Time: Sep 12, 2020 at 11:47 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.30
 
@@ -376,14 +376,14 @@ CREATE TABLE `order` (
 --
 
 INSERT INTO `order` (`id`, `user_id`, `order_date`) VALUES
-(1, 2, '2020-09-11 12:21:03'),
-(2, 3, '2020-09-11 12:21:03'),
-(4, 4, '2020-09-11 12:21:03'),
-(5, 5, '2020-09-11 12:21:03'),
-(6, 6, '2020-09-11 12:21:03'),
-(7, 7, '2020-09-11 12:21:03'),
-(8, 8, '2020-09-11 12:21:03'),
-(9, 9, '2020-09-11 12:21:03');
+(1, 2, '2020-09-12 11:43:49'),
+(2, 3, '2020-09-12 11:43:49'),
+(4, 4, '2020-09-12 11:43:49'),
+(5, 5, '2020-09-12 11:43:49'),
+(6, 6, '2020-09-12 11:43:49'),
+(7, 7, '2020-09-12 11:43:49'),
+(8, 8, '2020-09-12 11:43:49'),
+(9, 9, '2020-09-12 11:43:49');
 
 -- --------------------------------------------------------
 
@@ -521,25 +521,25 @@ CREATE TABLE `user` (
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `address_id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL,
-  `otp_password` char(6) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `otp_timestamp` datetime NOT NULL DEFAULT current_timestamp()
+  `otp` char(6) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `otp_created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `email`, `username`, `first_name`, `last_name`, `password`, `address_id`, `role_id`, `otp_password`, `otp_timestamp`) VALUES
-(2, 'pero13@gmail.com', 'Kale', 'Kale', 'Wyllt', '2F3uyA', 2, 2, '111111', '2020-09-11 12:21:02'),
-(3, 'mlinggood2@nih.gov', 'Linggood', 'Kale', 'Linggood', 'McW7Fi1Z5S', 3, 2, '222222', '2020-09-11 12:21:02'),
-(4, 'rwagstaff3@dagondesign.com', 'Rickie', 'Rickie', 'Wagstaff', 'Zo8TQC', 4, 2, '333333', '2020-09-11 12:21:02'),
-(5, 'jwesgate4@intel.com', 'Jeffy', 'Jeffy', 'Wesgate', '6r6WHagvSmT', 5, 2, '444444', '2020-09-11 12:21:02'),
-(6, 'dsylvester0@java.com', 'Delano', 'Delano', 'Sylvester', 'Male', 6, 2, '555555', '2020-09-11 12:21:02'),
-(7, 'mgriffoen1@opensource.org', 'Mala', 'Mala', 'Griffoen', 'Female', 7, 2, '666666', '2020-09-11 12:21:02'),
-(8, 'cjobe2@desdev.cn', 'Celine', 'Jobe', 'Jobe', 'Female', 8, 2, '777777', '2020-09-11 12:21:02'),
-(9, 'kmccusaig3@simplemachines.org', 'Kristian', 'Kristan', 'McCuaig', 'Female', 9, 2, '888888', '2020-09-11 12:21:02'),
-(10, 'dedelmann4@tiny.cc', 'Derward', 'Edelmann', 'Edelmann', 'Male', 10, 2, '999999', '2020-09-11 12:21:02'),
-(11, 'ivandragosoldo@gmail.com', 'Ivan', 'Ivan', 'Soldo', 'Smvhasvbn', 10, 1, '123456', '2020-09-11 12:21:02');
+INSERT INTO `user` (`id`, `email`, `username`, `first_name`, `last_name`, `password`, `address_id`, `role_id`, `otp`, `otp_created_at`) VALUES
+(2, 'pero13@gmail.com', 'Kale', 'Kale', 'Wyllt', '2F3uyA', 2, 2, '111111', '2020-09-12 11:43:48'),
+(3, 'mlinggood2@nih.gov', 'Linggood', 'Kale', 'Linggood', 'McW7Fi1Z5S', 3, 2, '222222', '2020-09-12 11:43:48'),
+(4, 'rwagstaff3@dagondesign.com', 'Rickie', 'Rickie', 'Wagstaff', 'Zo8TQC', 4, 2, '333333', '2020-09-12 11:43:48'),
+(5, 'jwesgate4@intel.com', 'Jeffy', 'Jeffy', 'Wesgate', '6r6WHagvSmT', 5, 2, '444444', '2020-09-12 11:43:48'),
+(6, 'dsylvester0@java.com', 'Delano', 'Delano', 'Sylvester', 'Male', 6, 2, '555555', '2020-09-12 11:43:48'),
+(7, 'mgriffoen1@opensource.org', 'Mala', 'Mala', 'Griffoen', 'Female', 7, 2, '666666', '2020-09-12 11:43:48'),
+(8, 'cjobe2@desdev.cn', 'Celine', 'Jobe', 'Jobe', 'Female', 8, 2, '777777', '2020-09-12 11:43:48'),
+(9, 'kmccusaig3@simplemachines.org', 'Kristian', 'Kristan', 'McCuaig', 'Female', 9, 2, '888888', '2020-09-12 11:43:48'),
+(10, 'dedelmann4@tiny.cc', 'Derward', 'Edelmann', 'Edelmann', 'Male', 10, 2, '999999', '2020-09-12 11:43:48'),
+(11, 'ivandragosoldo@gmail.com', 'Ivan', 'Ivan', 'Soldo', 'Smvhasvbn', 7, 1, '123456', '2020-09-12 11:43:48');
 
 --
 -- Indexes for dumped tables
